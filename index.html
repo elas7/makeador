@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Makea o no makea?</title>
+    <style>
+        body {
+            background: grey;
+            color: white;
+            font-family: Arial, helvetica, sans-serif;
+            text-align: center;
+        }
+
+        .makea-text {
+            font-size: 50px;
+        }
+
+        .makea-text-big {
+            font-size: 150px;
+        }
+
+        .makea {
+            background: forestgreen;
+        }
+
+        .no-makea {
+            background: orangered;
+        }
+
+        .not-sure {
+            background: url(./img/not-sure.gif);
+        }
+
+    </style>
+</head>
+<body>
+    <h3 class="header">Makea o no makea?</h3>
+    <h1 class="makea-text">Loading if makea...</h1>
+    <h5 class="footer">Still not sure if makea? Press F5!</h5>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
+    <script>
+        setTimeout(function() {
+            var makeaArray = ['Makea', 'No Makea', 'Not Sure If Makea'];
+            var makeaText = makeaArray[Math.floor(Math.random() * makeaArray.length)];
+            var $makeaElem = $('.makea-text');
+            $makeaElem.html(makeaText);
+            if (makeaText === 'No Makea') {
+                $('body').addClass('no-makea');
+            } else if (makeaText === 'Makea'){
+                $('body').addClass('makea');
+            } else {
+                $('body').addClass('not-sure');
+            }
+            $makeaElem.addClass('makea-text-big');
+        }, 1000);
+    </script>
+</body>
+</html>
