@@ -40,17 +40,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
     <script>
         setTimeout(function() {
-            var makeaArray = ['Makea', 'No Makea', 'Not Sure If Makea'];
-            var makeaText = makeaArray[Math.floor(Math.random() * makeaArray.length)];
-            var $makeaElem = $('.makea-text');
-            $makeaElem.html(makeaText);
-            if (makeaText === 'No Makea') {
-                $('body').addClass('no-makea');
-            } else if (makeaText === 'Makea'){
-                $('body').addClass('makea');
-            } else {
-                $('body').addClass('not-sure');
-            }
+            var makeaObj = {
+                'makea': 'Makea',
+                'no-makea': 'No Makea',
+                'not-sure': 'Not Sure If Makea'
+            };
+            
+            var keys = Object.keys(makeaObj);
+            var makeaKey = keys[Math.floor(Math.random() * keys.length)];
+            var makeaValue = makeaObj[makeaKey];
+
+            $('.makea-text').text(makeaValue);
+            $('body').addClass(makeaKey);
             $makeaElem.addClass('makea-text-big');
         }, 1000);
     </script>
