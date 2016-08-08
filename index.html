@@ -41,24 +41,30 @@
 <body>
     <h3 class="header">Makea o no makea?</h3>
     <h1 class="makea-text">Loading if makea...</h1>
-    <h5 class="footer">Still not sure if makea? Press F5!</h5>
+    <button onclick="calculateIfMakea()">Recalculate If Makea</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
     <script>
-        setTimeout(function() {
-            var makeaObj = {
-                'makea': 'Makea',
-                'no-makea': 'No Makea',
-                'not-sure': 'Not Sure If Makea'
-            };
-            
-            var keys = Object.keys(makeaObj);
-            var makeaKey = keys[Math.floor(Math.random() * keys.length)];
-            var makeaValue = makeaObj[makeaKey];
+        function calculateIfMakea() {
+          var makeaObj = {
+              'makea': 'Makea',
+              'no-makea': 'No Makea',
+              'not-sure': 'Not Sure If Makea'
+          };
 
+          var keys = Object.keys(makeaObj);
+          var makeaKey = keys[Math.floor(Math.random() * keys.length)];
+          var makeaValue = makeaObj[makeaKey];
+
+          $('.makea-text').text("Loading if makea...");
+          $('body').removeClass();
+
+          setTimeout(function() {
             $('.makea-text').text(makeaValue);
             $('body').addClass(makeaKey);
-            $makeaElem.addClass('makea-text-big');
-        }, 1000);
+          }, 1000);
+        }
+
+        $(document).ready(calculateIfMakea);
     </script>
 </body>
 </html>
